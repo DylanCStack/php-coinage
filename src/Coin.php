@@ -1,11 +1,11 @@
 <?php
     class Coin
     {
-        function getCoinage($input)
+        function getCoinage($input, $goal)
         {
             $output_array = array();
             $change = $input;
-            if($change >= 25)
+            if($change >= 25 && $goal >= 25)
             {
                 $quarters =(int)($change/25);
                 array_push($output_array, $quarters);
@@ -13,7 +13,7 @@
             } else {
                 array_push($output_array, 0);
             }
-            if($change >= 10)
+            if($change >= 10 && $goal >= 10)
             {
                 $dimes = (int)($change/10);
                 array_push($output_array, $dimes);
@@ -21,15 +21,14 @@
             } else {
                 array_push($output_array, 0);
             }
-            if($change >= 05)
+            if($change >= 05 && $goal >= 5)
             {
                 $nickels = (int)($change/05);
                 array_push($output_array, $nickels);
 
-                var_dump($change);
-                var_dump($nickels);
+
                 $change -= $nickels * 05;
-                var_dump($change);
+
             } else {
                 array_push($output_array, 0);
             }
@@ -37,12 +36,11 @@
             if($change >= 01)
             {
                 $pennies = (int) $change/01;
-                var_dump($pennies);
+
                 array_push($output_array,  $pennies);
-                var_dump($change);
-                var_dump($pennies);
+
                 $change -= $pennies * 01;
-                var_dump($change);
+
             } else {
                 array_push($output_array, 0);
             }
@@ -53,6 +51,4 @@
         }
     }
 
-    $coin = new Coin;
-    $coin->getCoinage(43);
 ?>
